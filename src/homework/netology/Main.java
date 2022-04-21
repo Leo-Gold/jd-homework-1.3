@@ -18,6 +18,7 @@ public class Main {
         File test = new Created(new File(src, "test")).createdDir();
 
         File res = new Created(new File(games, "res")).createdDir();
+        File savegames = new Created(new File(games, "savegames")).createdDir();
         File drawables = new Created(new File(res, "drawables")).createdDir();
         File vectors = new Created(new File(res, "vectors")).createdDir();
         File icons = new Created(new File(res, "icons")).createdDir();
