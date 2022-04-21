@@ -1,5 +1,6 @@
 package homework.netology;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
@@ -18,6 +19,8 @@ public class SaveGame {
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
         ) {
             oos.writeObject(gameProgress);
+            String name = new File(urlbat).getName();
+            System.out.println("файл " + name + " сохранён");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

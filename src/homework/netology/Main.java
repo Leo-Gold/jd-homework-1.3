@@ -48,6 +48,10 @@ public class Main {
             new ZipArchive(url).zipFiles();
             // удаление заархивированных файлов
             new ZipArchive(url).deleteFiles();
+            // разархивирование файлов
+            new ZipArchive(url).openZip();
+            // чтение файлов
+            new Reader(url).openProgress();
         }
     }
 }

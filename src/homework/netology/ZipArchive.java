@@ -1,10 +1,8 @@
 package homework.netology;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 public class ZipArchive {
@@ -41,5 +39,25 @@ public class ZipArchive {
         if (delete.delete()) {
             System.out.println("файл " + delete.getName() + " удалён");
         }
+    }
+
+    public void openZip() {
+        try (
+                FileInputStream fis = new FileInputStream(urlzip);
+                ZipInputStream zis = new ZipInputStream(fis)
+        ) {
+                while (zis.getNextEntry() != null) {
+                    FileOutputStream fos = new FileOutputStream(urlbat);
+                    for (int i = zis.read(); i != -1 ; i = zis.read()) {
+                        fos.write(i);
+                    }
+                    fos.flush();
+                    zis.closeEntry();
+                    fos.close();
+            }
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+
     }
 }
