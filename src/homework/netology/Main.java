@@ -7,7 +7,9 @@ public class Main {
     public static GameProgress[] gameProgress = new GameProgress[countData];
 
     public static void main (String[] args) {
+        install();
         generateData();
+        workData();
     }
 
     public static void install() {
@@ -34,6 +36,18 @@ public class Main {
     public static void generateData() {
         for (int i = 0; i < countData; i++) {
             gameProgress[i] = new GenerateData().newGameProgress();
+        }
+    }
+
+    public static void workData(){
+        for (int i = 0; i < countData; i++) {
+            String url = "Games/savegames/save" + i;
+            // сохранение данных
+            new SaveGame(url, gameProgress[i]).save();
+            // архивирование данных
+            new ZipArchive(url).zipFiles();
+            // удаление заархивированных файлов
+            new ZipArchive(url).deleteFiles();
         }
     }
 }
