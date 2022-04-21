@@ -3,9 +3,11 @@ package homework.netology;
 import java.io.File;
 
 public class Main {
+    public static int countData = 3;
+    public static GameProgress[] gameProgress = new GameProgress[countData];
 
     public static void main (String[] args) {
-        install();
+        generateData();
     }
 
     public static void install() {
@@ -27,5 +29,11 @@ public class Main {
         File tempTxt = new Created(new File(temp, "temp.txt")).createdFile();
 
         new Created(tempTxt).saveLogFile();
+    }
+
+    public static void generateData() {
+        for (int i = 0; i < countData; i++) {
+            gameProgress[i] = new GenerateData().newGameProgress();
+        }
     }
 }
